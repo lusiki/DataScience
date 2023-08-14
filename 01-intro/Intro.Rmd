@@ -3,7 +3,7 @@ title: "Introduction to Data Science"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 subtitle: "Lecture 1: Course Introduction"
 author: "Luka Sikic"
-date: "Catholic University of Croatia | [EC 607](https://github.com/uo-ec607)" #"`r format(Sys.time(), '%d %B %Y')`"
+date: "Catholic University of Croatia | [GH](https://github.com/lusiki/DataScience)" #"`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts] 
@@ -68,7 +68,7 @@ name: prologue
 
 ### Course
 
-`r fa('globe')` https://github.com/uo-ec607
+`r fa('globe')` https://github.com/lusiki/DataScience
 
 
 
@@ -646,7 +646,7 @@ p2 + theme_modern_rc() + geom_point(aes(size = pop, col = continent), alpha = 0.
 
 # What
 Elaborate extension: Animation! (See the next slide for the resulting GIF.)
-```{r gganim1, eval=FALSE}
+```{r gganim1, eval=TRUE}
 # library(gganimate)
 ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
   geom_point(alpha = 0.7, show.legend = FALSE) +

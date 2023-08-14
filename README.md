@@ -1,14 +1,38 @@
-# Data science for economists
+# Introduction to Data science 
 
-[`Lectures`](#lectures) | [`Details`](#details) |
-[`FAQ`](#faq) | [`License`](#license)
+The course is intended for social scientists (political science, communication studies, history, and economics) with no or little technical background in coding and undergraduate/graduate level knowledge in statistics.
+
+The course starts off from the Big Data approach to social sciences and modern data sources like the Web, apps, social networks, urban sensors, etc. The methodological focus is on computational social science (CSS) principles and the use of computer technologies for processing and analyzing (large volume) data. The course is not intended as a comprehensive reference for working with Big Data technologies in social sciences because the materials do not cover: working with the terminal (Bash Shell), working with collaboration and code exchange platforms (Git, GitHub), working with Docker, programming and iteration, parallel programming, cloud work (Cloud).
+
+The aim of the course is to familiarize students with:
+
+- The ecosystem of modern data management (Big Data)
+- Tools for data processing and manipulation (packages in the R programming language, SQL, Spark)
+- Modern methodology for data analysis (regression, machine learning, text processing - NLP)
+- Tools for presenting and sharing results (Markdown, Git)
+- The R programming language
+
+The course will equip students to understand modern sources and tools for data processing and enable them to engage in the modern research paradigm and technological (frontier) flows. In addition to emphasizing the academic application of acquired knowledge, the course will facilitate students' integration into the business IT sector on the analytics and project management side.
+Schedule
+
+<b>Lectures</b>     xxx, xx:00–xx:00
+<br><b>Office hours</b>   xxx, xx:00-xx:00
+Books
+
+We will use a multitude of different books and resources that will be freely available .
+The following book is essential literature for the course:
+
+<a href="http://barbra-coco.dyndns.org/yuri/R/R%20for%20Data%20Science-%20Import,%20Tidy,%20Transform,%20Visualize,%20and%20Model%20Data.pdf">R for Data Science</a>
+<br><i>by Garrett Grolemund and Hadley Wickham</i>
+<br>This is literature for R. A <a href="https://r4ds.had.co.nz/">bookdown</a> version is also available.
+
+Note: This course is cloned from Grant McDermot`s course [Data Science for Economists](https://github.com/uo-ec607/lectures) and adjusted acordingly.
+
 
 ## Lectures
 
-*Note: While I have provided PDF versions of the lectures, they are best viewed 
-in the original HTML format.*
 
-1. Introduction \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/01-intro/01-Intro.html) | [**.pdf**](https://raw.githack.com/uo-ec607/lectures/master/01-intro/01-Intro.pdf) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/01-intro/01-Intro.Rmd)\]
+1. Introduction \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/01-intro/01-Intro.html)\]
 2. Version control with Git(Hub) \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.html) | [**.pdf**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.pdf) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.Rmd)\]
 3. Learning to love the shell \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.html) | [**.pdf**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.pdf) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.Rmd)\]
 4. R language basics \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/04-rlang/04-rlang.html) | [**.pdf**](https://raw.githack.com/uo-ec607/lectures/master/04-rlang/04-rlang.pdf) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/04-rlang/04-rlang.Rmd)\]
