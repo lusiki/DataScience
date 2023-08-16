@@ -1,0 +1,1085 @@
+---
+title: "Introduction to Data Science"
+# subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
+subtitle: "Lecture 2: Data Structures and Sources"
+author: "Luka Sikic"
+date: "Catholic University of Croatia | [GH](https://github.com/lusiki/DataScience)" #"`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts] 
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{css, echo=FALSE}
+# CSS for including pauses in printed PDF output (see bottom of lecture)
+@media print {
+  .has-continuation {
+    display: block !important;
+  }
+}
+```
+
+```{r setup, include=FALSE}
+# xaringanExtra::use_scribble() ## Draw on slides. Requires dev version of xaringanExtra.
+
+options(htmltools.dir.version = FALSE)
+library(knitr)
+opts_chunk$set(
+  fig.align="center",  
+  fig.height=4, #fig.width=6,
+  # out.width="748px", #out.length="520.75px",
+  dpi=300, #fig.path='Figs/',
+  cache=T#, echo=F, warning=F, message=F
+  )
+library(tidyverse)
+library(hrbrthemes)
+library(fontawesome)
+```
+
+
+# Table of contents
+<br><br><br>
+
+1. [Structured and unstructured data](#structure)
+
+2. [Some important types of data](#dpractice)
+
+3. [Big Data in Social Sciences](#BData)
+
+4. [Sources](#sources)
+
+5. [](#ggplot2)
+
+---
+class: inverse, center, middle
+name: structure
+
+# Structured and unstructured data
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+---
+
+# Structured Data
+
+<br><br><br><br>
+- observations with characteristics, mostly organized in a table (rows and columns)
+- scientifically collected data, telephone directory
+- a smaller part of the data
+
+---
+
+# Unstructured Data
+
+<br><br><br><br>
+- data without a standard organizational hierarchy
+- Facebook posts, Twitter, server logs, genetic sequence of nucleotides, text data
+- probably more than 80% of all data
+- require adjustment before analysis
+
+---
+
+# Quantitative data
+
+<br><br>
+- numbers, mathematical procedures, average, time trend, threshold effects
+
+---
+
+# Qualitative data
+<br><br>
+- "natural" categories, language
+- the most frequent observation, unique values
+
+
+---
+class: inverse, center, middle
+name: dpractice
+
+# Some important types of data
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+---
+
+# Some important types of data
+
+## Big Data
+
+- due to their size, they cannot be stored on standard relational databases
+- unstructured, semi-structured and structured data
+- from terabytes to zettabytes in size
+- basis for machine learning, AI, predicting the future
+
+--- 
+
+
+# Some important types of data
+
+## Time series
+
+- each observation has a time stamp (event or processing)
+- eg behavioral data (web) used to predict action models
+- eg financial trading
+
+---
+# Some important types of data
+## Machine data
+
+- system produced data
+- eg PC logs, mobile phones, smart cars, applications, API, cloud applications, sensor signals
+- especially useful for threat identification, process quality control, forecasting
+
+---
+# Some important types of data
+## Spatial-temporal data
+
+- geographical and temporal stamp
+- demonstrate locational dynamics in time
+- tracking of vehicles, changes in the population, detection of anomalies in the (e.g. telecom) network
+
+---
+# Some important types of data
+## Open data
+
+- available to the public according to the "rules for use"
+- currently mostly limited to scientific use
+
+---
+# Some important types of data
+## Black data
+
+- unused data
+- mostly institutionally owned (companies, institutes, think-tanks, faculties)
+
+---
+# Some important types of data
+## Data in real time
+
+- high demand and "hot trend"
+- 5G
+- medicine, transport, trade
+- great potential
+
+---
+# Some important types of data
+## Genomic data
+
+- DNA analysis in order to identify the effects of drugs and treat diseases
+- analytics is the main limitation
+- collection and processing of data is difficult
+
+---
+# Some important types of data
+## Operational data
+
+- insights into processes beyond analysts and specialists
+- data on internships
+- useful for reverse engineering
+
+---
+# Some important types of data
+## High-dimensional data
+
+- popularized through IT support for facial recognition
+- due to the complexity of the transformations, they require new ways of recording and manipulation
+
+
+---
+class: inverse, center, middle
+name: BData
+
+# Big Data in Social Sciences
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+---
+
+# Characteristics 
+
+- high volume, scope, speed and variety
+- geographic, textual, and social media data
+- availability in real time, greater scope, new indicators and smaller structures
+- in the business sector and natural sciences, BD has already become a standard
+- social sciences and public institutions (governments) are late in accepting BD
+
+---
+
+# Potential
+
+- new insights into society, politics and economy
+- new research questions
+- more accurate predictions
+- better public policies
+
+---
+
+# Challenges
+
+- access to data
+- data management and analysis implementation (T.Khun!?)
+- asking the right questions
+
+---
+class: inverse, center, middle
+name: sources
+
+# Data Sources
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+---
+
+
+# Overview
+
+<br>
+<br>
+<br>
+
+.pull-left[
+
+#### **Classic**
+
+- An experiment
+- Examination
+- An interview
+- Structured databases
+
+]
+
+.pull-right[
+
+#### **Modern (BigData)**
+
+- Web
+- Social networks
+- Applications
+- Sensors
+- Modern data management
+
+]
+
+
+.footnote[[*]Machine retrieval of (modern) data sources!]
+
+---
+
+# Old school sources
+
+### Experiment
+
+* High degree of control
+* Planned design
+* Longitudinal and case studies
+* The problem with generalization 
+]
+
+.pull-right[
+### Examination
+
+* Target population
+* Larger sample
+* Analysis of behavior, feelings, experiences
+* The problem of representativeness of the sample
+* Custom design required
+]
+
+---
+
+# Old school sources
+
+.pull-left[
+
+### Interview
+
+* Profiled pattern
+* Smaller sample
+* Suitable for in-depth analysis
+* Depends on the researcher
+* Difficulty reproducing results
+]
+
+
+.pull-right[
+
+### Structured dta bases
+
+* Enable quantitative analysis
+* Macro and mezzo level of analysis
+* It is necessary to adjust the data
+* Institutional and regulated data
+* Machine download of data
+]
+
+---
+
+# Classic
+
+### Example of using a structured database ([gapminder](https://www.gapminder.org/))
+
+```{r}
+# učitaj paket
+library(gapminder)
+# pregledaj podatke
+head(gapminder,8)
+```
+
+---
+
+# Classic
+
+### Example of using a structured database ([gapminder](https://www.gapminder.org/))
+
+```{r eval=FALSE}
+# učitaj pakete
+library(gganimate)
+library(gifski)
+library(ggplot2)
+# Izradi animiranu vizualizaciju
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) 
+```
+
+---
+
+# Classic
+
+### Example of using a structured database ([gapminder](https://www.gapminder.org/))
+
+```{r echo=F}
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent)
+```
+
+---
+
+# Modern data sources (BigData)
+
+
+<br>
+<br>
+<br>
+1. Web
+<br>
+<br>
+2. Social networks
+<br>
+<br>
+3. Applications
+<br>
+<br>
+4. Sensory devices
+
+
+---
+
+# Modern data sources (BigData)
+
+
+**Characteristics**:
+
+1. Big
+2. Fast
+3. Various
+4. Valuable
+5. Legally regulated
+
+
+<br><br>
+
+* Internet, smart devices, smart sensors
+* New data paradigm
+* Advanced technological infrastructure
+
+
+---
+
+# Modern data sources (BigData)
+
+### NEW RESEARCH PARADIGM
+
+* Analysis starts with data (theory is secondary)
+* Technical skills required
+* Complex and memory (RAM) demanding analytics
+* Novelties in the presentation and communication of results
+* Business applications lead the way
+* Application in social research is in its infancy (*computational social science*)
+* It is necessary to define a new research architecture (ecosystem)
+
+.footnote[[*] [Khun's revolution!?](https://journals.sagepub.com/doi/10.1177/2053951714528481)]
+
+
+---
+
+# Web
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+**Source of data for:**
+1. explanation
+<br>
+<br>
+2. modeling
+<br>
+<br>
+3. "nowcasting"
+<br>
+<br>
+4. prediction
+
+---
+# Web
+
+<br>
+<br>
+<br>
+<br>
+**Data collection:**
+<br>
+<br>
+1. [Web-Scraping](https://www.datacamp.com/community/tutorials/r-web-scraping-rvest)
+<br>
+<br>
+2. API (*application programming interface*)
+
+---
+# Web
+### Web scraping
+
+```{r warning=FALSE}
+# paket
+library(rvest) 
+url <- "https://en.wikipedia.org/wiki/List_of_Formula_One_drivers" 
+page <- read_html(url)
+drivers_F1 <- html_element(page, "table.sortable") %>%
+  html_table()
+head(drivers_F1)
+
+```
+
+---
+# Web
+### Web scraping
+```{r }
+str(drivers_F1)
+```
+
+---
+# Web
+### Web scraping
+```{r}
+drivers_F1 <- drivers_F1[-nrow(drivers_F1), ] # remove last row
+drivers_F1$`Drivers' Championships` <- substr(drivers_F1$`Drivers' Championships`,
+  start = 1, stop = 1
+)
+
+drivers_F1 %>%
+  group_by(Nationality) %>%
+  summarise(championship_country = sum(as.double(`Drivers' Championships`))) %>%
+  arrange(desc(championship_country))
+```
+
+```{r}
+drivers_F1 %>%
+  group_by(`Driver name`) %>%
+  summarise(championship_pilot = sum(as.double(`Drivers' Championships`))) %>%
+  arrange(desc(championship_pilot))
+```
+
+```{r}
+drivers_F1 %>%
+  filter(`Pole positions` > 1) %>%
+  ggplot(aes(x = as.double(`Pole positions`), y = as.double(`Drivers' Championships`))) +
+  geom_point(position = "jitter") +
+  labs(y = "Championships won", x = "Pole positions") +
+  theme_minimal()
+```
+
+
+
+
+
+---
+# Internet 
+### Internet - Google trends
+
+```{r echo=T}
+# paketi
+library (gtrendsR) 
+library(ggplot2)
+#kljucne rijeci
+keywords <- c("zavjera", "cjepljenje", "prosvjedi")
+#GEO
+country <- c('HR')
+#vremenski raspon
+time <- paste("2018-01-01", Sys.Date())
+#kanali
+channel <- 'web'
+# funkcija iz paketa
+trends <- gtrends(keywords, gprop = channel,geo = country, time = time )
+#samo 'interes kroz vrijeme'
+time_trend <- trends$interest_over_time
+```
+
+---
+
+# Internet 
+### Internet - Google trends
+ <br>
+ 
+```{r echo = TRUE}
+# paket
+library(tidyverse)
+# pregledaj podatke
+tail(sample_n(time_trend,7),7)
+```
+
+
+---
+
+# Internet 
+### Internet - Google trends
+ <br>
+ 
+```{r echo=TRUE, fig.width=5, fig.height=3}
+# paket
+library(lubridate)
+# napravi grafikon 
+google_pretraga <- ggplot(data = time_trend,
+               aes(x = date, y = hits, group = keyword, col = keyword)) +
+               geom_line() +
+               xlab('Vrijeme') + 
+               ylab('Relativni interes') +
+               theme_bw() +
+               theme(legend.title = element_blank(),
+                     legend.position = "bottom",
+                     legend.text = element_text (size = 12)) + 
+               ggtitle("Google volumen pretrage")
+  
+```
+
+---
+
+# Internet 
+### Internet - Google trends
+
+```{r  echo=TRUE, fig.width=4, fig.height=2}
+# grafički prikaz
+google_pretraga
+```
+
+---
+
+# Internet 
+### Internet - Google trends
+
+```{r echo=TRUE, fig.width=5, fig.height=2}
+# sve u jednom redu koda + "mjere"   :-) 
+plot(gtrendsR::gtrends(keyword = c("zavjera", "cjepljenje", "prosvjedi","mjere"),
+                       geo = "HR",
+                       time = time))
+```
+
+
+
+### Examples of research based on Google trends:
+
+1. [Home Sales Analysis](https://rpubs.com/tonytusharjr/newhomes)
+<br>
+<br>
+2. [Demand for cars](https://aisel.aisnet.org/icis2017/DataScience/Presentations/1/)
+<br>
+<br>
+3. [Tourism demand](https://www.researchgate.net/publication/336516335_Forecasting_international_tourism_demand_in_Croatia_using_Google_Trends)
+<br>
+<br>
+4. [Unemployment](https://www.sciencedirect.com/science/article/abs/pii/S1544612319301072)
+<br>
+<br>
+5. [Movements in stock markets](https://www.emerald.com/insight/content/doi/10.1108/JED-07-2019-0017/full/pdf?title=stock-market-activity-and-google -trends-the-case-of-a-developing-economy)
+<br>
+<br>
+6. [Purchasing cinema tickets](https://www.tandfonline.com/doi/abs/10.1080/13504851.2011.613744)
+<br>
+<br>
+7. [Political radicalism in China](https://martinctc.github.io/blog/vignette-google-trends-with-gtrendsr/)
+<br>
+<br>
+8. [Political views](https://journals.sagepub.com/doi/full/10.1177/2378023118760414)
+
+---
+# API
+### API - COVID19 data
+
+```{r ,fig.width=6, fig.height=3, warning=FALSE}
+# učitaj pakete
+#remotes::install_github("joachim-gassen/tidycovid19")
+library(tidycovid19)
+library(zoo)
+# preuzmi podatke
+df <- download_merged_data(cached = TRUE, silent = TRUE)
+# uredi podatke i napravi grafikon
+covid <- df %>%
+  filter(iso3c == "HRV") %>%
+  mutate(
+    new_cases = confirmed - lag(confirmed),
+    ave_new_cases = rollmean(new_cases, 7, na.pad=TRUE, align="right")) %>%
+  filter(!is.na(new_cases), !is.na(ave_new_cases)) %>%
+  ggplot(aes(x = date)) +
+  geom_bar(aes(y = new_cases), stat = "identity", fill = "lightblue") +
+  geom_line(aes(y = ave_new_cases), color ="red") +
+  theme_minimal() +
+  xlab("Novi slučajevi") + 
+  ylab("Datum") +
+  ggtitle("COVID19 incidencija u Hrvatskoj")
+```
+
+---
+# API
+### API - COVID19 data
+
+
+```{r, fig.width=6, fig.height=3}
+# grafički prikaz
+covid
+```
+
+--- 
+
+# Social Media
+
+<br>
+**Popular social networks:**
+<br>
+<br>
+- [Facebook](https://www.kaggle.com/chrisbow/an-introduction-to-facebook-ad-analysis-using-r) [(See also!)](https://www.residualthoughts.com /2018/02/12/analyzing-facebook-messages-in-r/)
+<br>
+- [LinkedIn](https://github.com/mpiccirilli/Rlinkedin)
+<br>
+- [Youtube](https://rpubs.com/arafath/YouTubeVideos_Analysis)
+<br>
+- [Instagram](https://github.com/JonasSchroeder/InstaCrawlR)
+<br>
+- TikTok
+<br>
+- Google+
+<br>
+- Tumblr
+<br>
+- Flickr
+<br>
+<br>
+<br>
+.footnote[[*] [Digital 2021:Croatia](https://datareportal.com/reports/digital-2021-croatia?rq=Croatia)]
+
+---
+
+# Social Media
+
+<br>
+<br>
+<br>
+### The most important trends
+
+<br>
+- Business applications lead the way
+<br>
+- Perspective research field in political science, communication science, economics
+<br>
+- [API-calypse](https://snurb.info/files/2019/After%20the%20%27APIcalypse%27.pdf) and the *Cambridge Analytica* case; [Social Dilemma](https://www.thesocialdilemma.com/)
+<br>
+- What to do next!?
+<br>
+<br>
+<br>
+
+.footnote[[*] [College!](https://lusiki.github.io/Learning-Social-Media-Analytics/)]
+<br>
+
+
+
+---
+# Social Media
+<br>
+#### Croatian influencers on Facebook
+<br>
+<br>
+- data downloaded from the [Apify](https://apify.com/) service
+<br>
+- data with payment
+<br>
+- FB data available only for public profiles
+<br>
+- technological brands in Croatia
+<br>
+- about a month
+ 
+---
+# Social Media
+#### Croatian influencers on Facebook (*impressions*)
+<br>
+
+<br>
+```{r importFacebook, echo=FALSE, message=FALSE, warning=FALSE}
+
+library(readxl)
+library(janitor)
+
+
+site_data_columns <- read_excel("./02-data/09-21.xlsx",
+                               sheet = "Facebook")
+
+site_data_column_names <- colnames(site_data_columns)
+column_data_types <- c()
+for(i in 1 : length(site_data_column_names)){  
+
+    #where date is a column name
+    if(site_data_column_names[i] == "date"){
+         column_data_types[i] <- "date"
+
+         #where result is a column name
+         } else if (site_data_column_names[i] == "result") {
+                      column_data_types[i] <- "numeric"
+
+         } else{
+                column_data_types[i] <- "text"
+        }
+}
+column_data_types[5] <- "date"
+
+
+
+facebook <- readxl::read_excel("./02-data/09-21.xlsx",
+                               sheet = "Facebook",
+                               col_types = column_data_types) %>% 
+  row_to_names(.,1) %>% 
+  clean_names() %>%
+  select(-indexed,-category,-image,-languages) %>%
+  rename(Date = na)
+
+```
+
+
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
+
+library(kableExtra)
+
+options(digits = 2, scipen = 999, big.mark = ".")
+
+facebook %>%
+  mutate(impressions = as.numeric(impressions),
+         comments = as.numeric(comments),
+         engagements = as.numeric(engagements),
+         likes = as.numeric(likes),
+         audience = as.numeric(audience)) %>%
+  rename(Activity = type) -> fbDta
+
+fbDta %>%
+  group_by(author) %>%
+  top_n(.,5, wt = "impressions") %>% 
+  arrange(desc(impressions)) %>%
+  filter(impressions > 500) %>%
+  select(author, impressions, engagements, likes, text, Activity,  url, Date) %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
+    kable_styling() %>%
+    scroll_box(width = "770px", height = "450px")
+```
+
+---
+# Social Media
+#### Croatian influencers on Facebook (*like*)
+
+
+<br>
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
+
+fbDta %>%
+  top_n(.,10, wt = "likes") %>% 
+  arrange(desc(likes)) %>%
+  filter(likes > 50) %>%
+  select(text, Activity, author, url, impressions, engagements, likes, Date) %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
+    kable_styling() %>%
+    scroll_box(width = "770px", height = "450px")
+
+```
+---
+# Social Media
+### Twitter
+* The most famous microblogging service
+<br>
+<br>
+* Numerous papers and analyses
+<br>
+<br>
+* [Popular in quantitative political science](http://pablobarbera.com/static/social-media-data-generators.pdf)
+<br>
+<br>
+* [Predicting political outcomes](https://core.ac.uk/reader/11310530)
+<br>
+<br>
+* [Prediction of stock trends](http://cs229.stanford.edu/proj2011/GoelMittal-StockMarketPredictionUsingTwitterSentimentAnalysis.pdf)
+<br>
+<br>
+* [Tracking public changes](https://openknowledge.worldbank.org/bitstream/handle/10986/22656/The0pulse0of0p0eform0in0El0Salvador.pdf?sequence=1&isAllowed=y)
+<br>
+<br>
+
+.footnote[[*] [Support for analysis in R](https://towardsdatascience.com/a-guide-to-mining-and-analysing-tweets-with-r-2f56818fdd16); [InfoCoV](https://www.netokracija.com/infocov-istrazivanje-ana-mestrovic-covid-19-174006)]
+
+
+
+
+
+---
+# Social Media
+### YouTube in Croatia (analysis at [link](https://www.netokracija.com/analiza-hrvatske-youtube-scene-od-1400-kanala-samo-njh-6-ima-preko-milijun-pretplatnika -180868))
+<br>
+```{r  echo=FALSE, fig.height=12}
+knitr::include_url("https://www.netokracija.com/analiza-hrvatske-youtube-scene-od-1400-kanala-samo-njih-6-ima-preko-milijun-pretplatnika-180868")
+```
+---
+# App Data
+#### Primjer analize korištenja vlastitih mobilnih aplikacija 
+
+```{r warning=FALSE}
+# Učitaj pakete
+library(jsonlite)
+library(tidyverse)
+library(patchwork)
+# Učitaj podatke
+android <- jsonlite::fromJSON("./02-data/MyActivity.json")
+# pregledaj podatke
+glimpse(android)
+# prilagodi datum
+android %>% 
+  mutate(date = lubridate::date(time), month =lubridate::month(time))->android
+```
+
+---
+# App Data
+#### Example of analysis of the use of own mobile applications 
+<br>
+```{r}
+# napravi grafikon
+najAplikacije <- android %>% 
+  count(header, sort = TRUE)  %>% 
+  head(20) %>% 
+  mutate(header = fct_reorder(header, n)) %>% 
+  ggplot() + geom_col(aes(y = header, x = n)) +
+  theme_minimal() +
+  ylab("") +
+  xlab("") +
+  labs(title = "Najkorištenije aplikacije",
+       subtitle = "Korištenje vlastitog Android mobilnog uredaja",
+       caption = "Podatci:Google Takeout")
+```
+
+---
+# App Data
+#### Example of analysis of the use of own mobile applications
+
+
+```{r fig.width=7, fig.height=4}
+# prikaži grafički 
+najAplikacije
+```
+
+---
+# App Data
+#### Example of analysis of the use of own mobile applications
+
+```{r warning= FALSE, message=FALSE}
+android %>% 
+  filter(month %in% '7') %>% # ponovi i za listopad/nije prikazano zbog prostora
+  group_by(month, header) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  head(10) %>% #View()
+  mutate(header = fct_reorder(header, n)) %>% 
+  ggplot() + geom_col(aes(y = header, x = n)) +
+  theme_minimal() +
+  ylab("") +
+  xlab("") +
+  labs(title = "Najkorištenije aplikacije u srpnju",
+       subtitle = "Korištenje vlastitog Android mobilnog uredaja",
+       caption = "Podatci:Google Takeout") -> najAplikacije7
+```
+
+```{r echo=FALSE, warning= FALSE, message=FALSE}
+android %>% 
+  filter(month %in% '10') %>% 
+  group_by(month, header) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  head(10) %>% #View()
+  mutate(header = fct_reorder(header, n)) %>% 
+  ggplot() + geom_col(aes(y = header, x = n)) +
+  theme_minimal() +
+  ylab("") +
+  xlab("") +
+  labs(title = "Najkorištenije aplikacije u listopadu",
+       subtitle = "Korištenje vlastitog Android mobilnog uredaja",
+       caption = "Podatci:Google Takeout") -> najAplikacije10
+
+```
+
+---
+# App Data
+#### Example of analysis of the use of own mobile applications 
+
+```{r  fig.width=7, fig.height=4, echo=FALSE}
+# prikaži grafički
+najAplikacije7 / najAplikacije10
+```
+
+---
+
+# Sensory devices
+
+<br>
+<br>
+<br>
+<br>
+ 1. Mobile sensors (number of passengers in public transport)
+<br>
+<br>
+ 2. GPS (delivery, epidemiology)
+<br>
+<br>
+ 3. Card transactions (forecasting bankruptcy, marketing, consumer behavior)
+
+.footnote[[*] Legally sensitive data!]
+
+
+---
+# Sensory devices
+### Google mobility
+
+```{r ,fig.width=6, fig.height=2}
+
+df %>% # podatci iz paketa 
+  filter(iso3c == "HRV", date >= "2020-02-21") %>%
+  mutate(gov_interventions = (soc_dist + mov_rest)/
+           max(soc_dist + mov_rest, na.rm = TRUE),
+         lockdown = lockdown == 1) %>%
+  select(date, lockdown, gov_interventions, starts_with("gcmr_")) %>%
+  pivot_longer(cols = c(5:9), names_to = "Mjere", values_to = "value") %>%
+  na.omit() -> dta
+
+mobilnost <- ggplot(dta, aes(x = date, y = value, group = Mjere, color = Mjere)) + 
+  theme_minimal() +
+  annotate("rect", xmin = min(dta$date[dta$lockdown]), xmax = max(dta$date), 
+           ymin = -Inf, ymax = Inf, 
+           fill = "lightblue", color = NA, alpha = 0.2) +
+  geom_line() +
+  xlab("Vrijednost") +
+  ylab("Datum")
+```
+
+---
+# Sensory devices
+### Google mobility
+
+```{r ,fig.width=6, fig.height=3}
+# prikaži grafički
+mobilnost
+```
+
+
+---
+
+# Big (Modern) Data Management 
+
+<br>
+<br>
+<br>
+.pull-left[
+ **Data collection**
+* API
+* Web Scraping
+* Databases
+<br>
+<br>
+]
+
+.pull-right[
+**Data structuring**
+* Cleaning
+* Manipulation
+* Programmatic approach
+* Standardization
+* Merge bases
+
+<br>
+<br>
+]
+
+
+---
+<br>
+<br>
+<br>
+
+.pull-left[
+**Data analysis**
+* Supervised and unsupervised machine learning
+* Deep learning
+* Ensemble methods
+* Bayes
+* NLP (txt.)
+<br>
+<br>
+]
+
+.pull-right[
+**Robustness check**
+* Information criteria
+* 'Cross'-validation
+* Train-test split
+* Backtesting
+* Accuracy of the classifier (ROC, Confusion Mtx)
+<br>
+<br>
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
