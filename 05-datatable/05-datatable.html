@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Data Science for Economists</title>
+    <title>Introduction to Data Science</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Grant McDermott" />
+    <meta name="author" content="Luka Sikic" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="libs/cols.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Data Science for Economists
-## Lecture 5: Data cleaning &amp; wrangling: (2) data.table
-### Grant McDermott
-### University of Oregon | <a href="https://github.com/uo-ec607">EC 607</a>
+.title[
+# Introduction to Data Science
+]
+.subtitle[
+## Lecture 3: Data cleaning &amp; wrangling: (2) data.table
+]
+.author[
+### Luka Sikic
+]
+.date[
+### Catholic University of Croatia | <a href="https://github.com/lusiki/DataScience">GH</a>
+]
 
 ---
 
@@ -173,19 +180,16 @@ microbenchmark(collapse_dplyr(), collapse_dt(), times = 1)
 
 ```
 ## Unit: milliseconds
-##              expr        min         lq       mean     median         uq
-##  collapse_dplyr() 112.396376 112.396376 112.396376 112.396376 112.396376
-##     collapse_dt()   5.982716   5.982716   5.982716   5.982716   5.982716
-##         max neval
-##  112.396376     1
-##    5.982716     1
+##              expr      min       lq     mean   median       uq      max neval
+##  collapse_dplyr() 742.1052 742.1052 742.1052 742.1052 742.1052 742.1052     1
+##     collapse_dt()  10.6505  10.6505  10.6505  10.6505  10.6505  10.6505     1
 ```
 ]
 
 --
 
 .small90[
-**Result:** data.table is 20x faster! (Thanks to [Keith Head](https://twitter.com/ckhead) for this example.)
+**Result:** data.table is 70x faster! (Thanks to [Keith Head](https://twitter.com/ckhead) for this example.)
 ]
 
 ---
@@ -473,7 +477,7 @@ starwars %&gt;%
 ```
 
 ```
-## # A tibble: 2 x 2
+## # A tibble: 2 × 2
 ##   gender    `mean(height, na.rm = T)`
 ##   &lt;chr&gt;                         &lt;dbl&gt;
 ## 1 feminine                       160.
@@ -919,7 +923,7 @@ You can rename (set) a column by reference. Again, run this yourself:
 
 
 ```r
-setnames(starwars_dt, old = c("name", "homeworld"), new = c"(alias", "crib"))[]
+setnames(starwars_dt, old = c("name", "homeworld"), new = c("alias", "crib"))[]
 ## Better change it back, in case we use "name" or "homeworld" on a later slide
 setnames(starwars_dt, old = c("alias", "crib"), new = c("name", "homeworld"))
 ```
@@ -934,9 +938,9 @@ starwars_dt[1:2, .(alias = name, crib = homeworld)]
 ```
 
 ```
-##                    alias  crib
-## 1: Wicket Systri Warrick Endor
-## 2:                 IG-88  &lt;NA&gt;
+##             alias     crib
+## 1: Luke Skywalker Tatooine
+## 2:          C-3PO Tatooine
 ```
 
 ---
@@ -1087,9 +1091,9 @@ starwars_dt[,
 ```
 
 ```
-##    species height  mass birth_year
-## 1:    Ewok   88.0 20.00    8.00000
-## 2:   Droid  131.2 69.75   53.33333
+##    species   height     mass birth_year
+## 1:   Human 176.6452 82.78182   53.41200
+## 2:   Droid 131.2000 69.75000   53.33333
 ```
 
 ---
@@ -1107,9 +1111,9 @@ starwars_dt[,
 ```
 
 ```
-##    species height  mass birth_year
-## 1:    Ewok   88.0 20.00    8.00000
-## 2:   Droid  131.2 69.75   53.33333
+##    species   height     mass birth_year
+## 1:   Human 176.6452 82.78182   53.41200
+## 2:   Droid 131.2000 69.75000   53.33333
 ```
 
 First, we specify what we want to *do* on our data subset (i.e. `.SD`). In this case, we want the mean for each element, which we obtain by iterating over with the base `lapply()` function.&lt;sup&gt;1&lt;/sup&gt;
@@ -1133,9 +1137,9 @@ starwars_dt[,
 ```
 
 ```
-##    species height  mass birth_year
-## 1:    Ewok   88.0 20.00    8.00000
-## 2:   Droid  131.2 69.75   53.33333
+##    species   height     mass birth_year
+## 1:   Human 176.6452 82.78182   53.41200
+## 2:   Droid 131.2000 69.75000   53.33333
 ```
 
 First, we specify what we want to *do* on our data subset (i.e. `.SD`). In this case, we want the mean for each element, which we obtain by iterating over with the base `lapply()` function.&lt;sup&gt;1&lt;/sup&gt;
@@ -1161,9 +1165,9 @@ starwars_dt[,
 ```
 
 ```
-##    species height  mass birth_year
-## 1:    Ewok   88.0 20.00    8.00000
-## 2:   Droid  131.2 69.75   53.33333
+##    species   height     mass birth_year
+## 1:   Human 176.6452 82.78182   53.41200
+## 2:   Droid 131.2000 69.75000   53.33333
 ```
 
 First, we specify what we want to *do* on our data subset (i.e. `.SD`). In this case, we want the mean for each element, which we obtain by iterating over with the base `lapply()` function.&lt;sup&gt;1&lt;/sup&gt;
@@ -1283,65 +1287,6 @@ Or, you can set keys on an existing data.table with the `setkey()` function.
 
 &lt;/br&gt;
 P.S. Use the `key()` function to see what keys are currently set for your data.table. You can only ever have one key per table at a time, but it's very easy to change them using one of the above commands.
----
-
-# Example
-
-Recall the [speed benchmark](#fast) that we saw at the very beginning of the lecture: data.table ended up being 20x faster than dplyr for a fairly standard summarising task.
-
---
-
-Let's redo the benchmark, but this time include a version where we pre-assign a key. For optimal performance, the key should match the same variables that we're grouping/subsetting on. 
-- Again, a key can be set on multiple variables, although the lead grouping variable (in the below case: "name") is the most important.
-
---
-
-.small90[
-
-```r
-## First create a keyed version of the storms data.table.
-## Note that key variables match the 'by' grouping variables below.
-storms_dt_key = as.data.table(storms, key = c("name", "year", "month", "day"))
-## Collapse function for this keyed data.table. Everything else stays the same.
-collapse_dt_key = function() {
-  storms_dt_key[, .(wind = mean(wind), pressure = mean(pressure), category = first(category)), 
-                by = .(name, year, month, day)]
-}
-## Run the benchmark on all three functions.
-microbenchmark(collapse_dplyr(), collapse_dt(), collapse_dt_key(), times = 1)
-```
-]
-
-.right[*See next slide for results*]
----
-
-# Example (cont.)
-
-
-```
-## Unit: milliseconds
-##               expr        min         lq       mean     median         uq
-##   collapse_dplyr() 112.849845 112.849845 112.849845 112.849845 112.849845
-##  collapse_dt_key()   1.107796   1.107796   1.107796   1.107796   1.107796
-##         max neval
-##  112.849845     1
-##    1.107796     1
-```
-
---
-
-The keyed data.table version is now **100x** (!!!) faster than dplyr.
---
-
-- That thing you feel... is your face melting.
-
---
-
-It's not just this toy example. In my experience working with real-life data, setting keys almost always leads to huge speed-ups... and those gains tend to scale as the datasets increase in size.
-
---
-
-**Bottom line:** data.table is already plenty fast. But use keys if you're really serious about performance.
 
 ---
 name: merge
@@ -1441,161 +1386,103 @@ microbenchmark(merge_dt(), merge_dt_key(), times = 1)
 
 ```
 ## Unit: milliseconds
-##            expr       min        lq      mean    median        uq       max
-##      merge_dt() 301.44576 301.44576 301.44576 301.44576 301.44576 301.44576
-##  merge_dt_key()  36.09671  36.09671  36.09671  36.09671  36.09671  36.09671
-##  neval
-##      1
-##      1
+##            expr      min       lq     mean   median       uq      max neval
+##      merge_dt() 395.8106 395.8106 395.8106 395.8106 395.8106 395.8106     1
+##  merge_dt_key()  47.5478  47.5478  47.5478  47.5478  47.5478  47.5478     1
 ```
 
 --
 
 So, we get about a **10x** speed-up for this simple case just by setting keys. More importantly, ordering your data by setting keys will make a huge difference once you start working with big datasets and making complicated joins. Trust me. (FWIW, the [same is true](https://tysonbarrett.com//jekyll/update/2019/10/11/speed_of_joins/) for dplyr.) 
 
----
-name: reshape
-class: inverse, center, middle
+&lt;!-- --- --&gt;
+&lt;!-- name: reshape --&gt;
+&lt;!-- class: inverse, center, middle --&gt;
 
-# Reshaping data
-&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=796px&gt;&lt;/html&gt;
+&lt;!-- # Reshaping data --&gt;
+&lt;!-- &lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=796px&gt;&lt;/html&gt; --&gt;
 
----
+&lt;!-- --- --&gt;
 
-# Reshaping options with data.table
+&lt;!-- # Reshaping options with data.table --&gt;
 
-In the tidyverse lecture, we saw how to reshape data using the tidyr::pivot* functions.
+&lt;!-- In the tidyverse lecture, we saw how to reshape data using the tidyr::pivot* functions. --&gt;
 
-data.table offers its own functions for flexibly reshaping data:
-- `melt()`: convert wide data to long data
-- `dcast()`: convert long data to wide data
+&lt;!-- data.table offers its own functions for flexibly reshaping data: --&gt;
+&lt;!-- - `melt()`: convert wide data to long data --&gt;
+&lt;!-- - `dcast()`: convert long data to wide data --&gt;
 
---
+&lt;!-- -- --&gt;
 
-However, I also want to flag the [**tidyfast**](https://tysonbarrett.com/tidyfast/index.html) package by Tyson Barrett, which implements data.table versions of the tidyr::pivot* functions (among other things).
-- `tidyfast::dt_pivot_longer()`: wide to long
-- `tidyfast::dt_pivot_wider()`: long to wide
+&lt;!-- However, I also want to flag the [**tidyfast**](https://tysonbarrett.com/tidyfast/index.html) package by Tyson Barrett, which implements data.table versions of the tidyr::pivot* functions (among other things). --&gt;
+&lt;!-- - `tidyfast::dt_pivot_longer()`: wide to long --&gt;
+&lt;!-- - `tidyfast::dt_pivot_wider()`: long to wide --&gt;
 
---
+&lt;!-- -- --&gt;
 
-I'll demonstrate reshaping with both options on the same fake "stocks" data that we created last time: 
+&lt;!-- I'll demonstrate reshaping with both options on the same fake "stocks" data that we created last time:  --&gt;
 
+&lt;!-- ```{r stocks} --&gt;
+&lt;!-- stocks = data.table(time = as.Date('2009-01-01') + 0:1, --&gt;
+&lt;!--                     X = rnorm(2, 0, 1), --&gt;
+&lt;!--                     Y = rnorm(2, 0, 2), --&gt;
+&lt;!--                     Z = rnorm(2, 0, 4)) --&gt;
+&lt;!-- ``` --&gt;
 
-```r
-stocks = data.table(time = as.Date('2009-01-01') + 0:1,
-                    X = rnorm(2, 0, 1),
-                    Y = rnorm(2, 0, 2),
-                    Z = rnorm(2, 0, 4))
-```
+&lt;!-- --- --&gt;
 
----
+&lt;!-- # Reshape from wide to long --&gt;
 
-# Reshape from wide to long
+&lt;!-- Our data are currently in wide format. --&gt;
+&lt;!-- ```{r stocks_print, dependson=stocks} --&gt;
+&lt;!-- stocks --&gt;
+&lt;!-- ``` --&gt;
 
-Our data are currently in wide format.
+&lt;!-- To convert this into long format, we could do either of the following: --&gt;
 
-```r
-stocks
-```
+&lt;!-- .pull-left[.small90[ --&gt;
+&lt;!-- ```{r melt} --&gt;
+&lt;!-- # See ?melt.data.table for options --&gt;
+&lt;!-- melt(stocks, id.vars ="time") --&gt;
+&lt;!-- ``` --&gt;
+&lt;!-- ]] --&gt;
 
-```
-##          time           X         Y         Z
-## 1: 2009-01-01 -0.36176990 -3.863700 -3.806386
-## 2: 2009-01-02  0.04221233  1.064251 -9.912991
-```
+&lt;!-- .pull-right[.small90[ --&gt;
+&lt;!-- ```{r dt_pivot_longer} --&gt;
+&lt;!-- stocks %&gt;%  --&gt;
+&lt;!--   dt_pivot_longer(X:Z, names_to="stock", values_to="price") --&gt;
+&lt;!-- ``` --&gt;
+&lt;!-- ]] --&gt;
 
-To convert this into long format, we could do either of the following:
+&lt;!-- --- --&gt;
 
-.pull-left[.small90[
+&lt;!-- # Reshape from long to wide --&gt;
 
-```r
-# See ?melt.data.table for options
-melt(stocks, id.vars ="time")
-```
+&lt;!-- Let's quickly save the long-format stocks data.table. I'll use the `melt()` approach and also throw in some extra column-naming options, just so you can see those in action. --&gt;
 
-```
-##          time variable       value
-## 1: 2009-01-01        X -0.36176990
-## 2: 2009-01-02        X  0.04221233
-## 3: 2009-01-01        Y -3.86370033
-## 4: 2009-01-02        Y  1.06425112
-## 5: 2009-01-01        Z -3.80638594
-## 6: 2009-01-02        Z -9.91299065
-```
-]]
+&lt;!-- ```{r stocks_long} --&gt;
+&lt;!-- stocks_long = melt(stocks, id.vars ="time",  --&gt;
+&lt;!--                    variable.name = "stock", value.name = "price") --&gt;
+&lt;!-- stocks_long --&gt;
+&lt;!-- ``` --&gt;
 
-.pull-right[.small90[
+&lt;!-- -- --&gt;
 
-```r
-stocks %&gt;% 
-  dt_pivot_longer(X:Z, names_to="stock", values_to="price")
-```
+&lt;!-- .pull-left[.small90[ --&gt;
+&lt;!-- ```{r dcast} --&gt;
+&lt;!-- dcast(stocks_long,  --&gt;
+&lt;!--       time ~ stock,  --&gt;
+&lt;!--       value.var = "price") --&gt;
+&lt;!-- ``` --&gt;
+&lt;!-- ]] --&gt;
 
-```
-##          time stock       price
-## 1: 2009-01-01     X -0.36176990
-## 2: 2009-01-02     X  0.04221233
-## 3: 2009-01-01     Y -3.86370033
-## 4: 2009-01-02     Y  1.06425112
-## 5: 2009-01-01     Z -3.80638594
-## 6: 2009-01-02     Z -9.91299065
-```
-]]
-
----
-
-# Reshape from long to wide
-
-Let's quickly save the long-format stocks data.table. I'll use the `melt()` approach and also throw in some extra column-naming options, just so you can see those in action.
-
-
-```r
-stocks_long = melt(stocks, id.vars ="time", 
-                   variable.name = "stock", value.name = "price")
-stocks_long
-```
-
-```
-##          time stock       price
-## 1: 2009-01-01     X -0.36176990
-## 2: 2009-01-02     X  0.04221233
-## 3: 2009-01-01     Y -3.86370033
-## 4: 2009-01-02     Y  1.06425112
-## 5: 2009-01-01     Z -3.80638594
-## 6: 2009-01-02     Z -9.91299065
-```
-
---
-
-.pull-left[.small90[
-
-```r
-dcast(stocks_long, 
-      time ~ stock, 
-      value.var = "price")
-```
-
-```
-##          time           X         Y         Z
-## 1: 2009-01-01 -0.36176990 -3.863700 -3.806386
-## 2: 2009-01-02  0.04221233  1.064251 -9.912991
-```
-]]
-
-.pull-right[.small90[
-
-```r
-stocks_long %&gt;% 
-  dt_pivot_wider(names_from=stock, 
-                 values_from=price)
-```
-
-```
-##          time           X         Y         Z
-## 1: 2009-01-01 -0.36176990 -3.863700 -3.806386
-## 2: 2009-01-02  0.04221233  1.064251 -9.912991
-```
-]]
+&lt;!-- .pull-right[.small90[ --&gt;
+&lt;!-- ```{r dt_pivot_wider} --&gt;
+&lt;!-- stocks_long %&gt;%  --&gt;
+&lt;!--   dt_pivot_wider(names_from=stock,  --&gt;
+&lt;!--                  values_from=price) --&gt;
+&lt;!-- ``` --&gt;
+&lt;!-- ]] --&gt;
 
 ---
 name: tidyverse
@@ -1646,9 +1533,7 @@ storms_dt[, .(wind = mean(wind),
   theme_minimal()
 ```
 ]]
-.pull-right[
-&lt;img src="05-datatable_files/figure-html/storms_ggplot-1.png" style="display: block; margin: auto;" /&gt;
-]
+
 
 ---
 
@@ -1719,17 +1604,14 @@ microbenchmark::microbenchmark(collapse_dplyr(), collapse_dtplyr(), times = 1)
 
 ```
 ## Unit: milliseconds
-##               expr        min         lq       mean     median         uq
-##   collapse_dplyr() 117.106259 117.106259 117.106259 117.106259 117.106259
-##  collapse_dtplyr()   5.416915   5.416915   5.416915   5.416915   5.416915
-##         max neval
-##  117.106259     1
-##    5.416915     1
+##               expr      min       lq     mean   median       uq      max neval
+##   collapse_dplyr() 565.7748 565.7748 565.7748 565.7748 565.7748 565.7748     1
+##  collapse_dtplyr()  16.1384  16.1384  16.1384  16.1384  16.1384  16.1384     1
 ```
 
 --
 
-A **20x** speed-up for free? I'd take it!
+A **35x** speed-up for free? I'd take it!
 
 --
 
@@ -1741,7 +1623,7 @@ lazy_dt(starwars) %&gt;% filter(species=="Human") %&gt;% group_by(gender) %&gt;%
 ```
 
 ```
-## Source: local data table [?? x 2]
+## Source: local data table [2 x 2]
 ## Call:   `_DT2`[species == "Human"][, .(height = mean(height, na.rm = TRUE)), 
 ##     keyby = .(gender)]
 ## 
@@ -1805,18 +1687,14 @@ Impress me with your data wrangling skills using either the tidyverse or data.ta
 ---
 class: inverse, center, middle
 
-# Next lecture: Webscraping (1)
+# Next lecture: Github 
 &lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=796px&gt;&lt;/html&gt;
-
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script src="libs/cols_macro.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,
-"highlightSpans": false,
 "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
@@ -1858,6 +1736,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

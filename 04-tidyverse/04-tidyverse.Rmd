@@ -766,7 +766,7 @@ tidy_stocks =
 # tidy_stocks %>% pivot_wider(names_from=stock, values_from=price)
 # tidy_stocks %>% pivot_wider(names_from=time, values_from=price)
 ```
-```
+
 
 
 ---

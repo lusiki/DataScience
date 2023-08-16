@@ -1,18 +1,16 @@
 ---
-title: "Data Science for Economists"
+title: "Introduction to Data Science"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
-subtitle: "Lecture 5: Data cleaning & wrangling: (2) data.table"
-author: "Grant McDermott"
-date: "University of Oregon | [EC 607](https://github.com/uo-ec607)" #"`r format(Sys.time(), '%d %B %Y')`"
+subtitle: "Lecture 3: Data cleaning & wrangling: (2) data.table"
+author: "Luka Sikic"
+date: "Catholic University of Croatia | [GH](https://github.com/lusiki/DataScience)"
 output:
   xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts, "libs/cols.css"] 
+    css: [default, metropolis, metropolis-fonts] 
     lib_dir: libs
     nature:
-      beforeInit: "libs/cols_macro.js"
       highlightStyle: github
       highlightLines: true
-      highlightSpans: false
       countIncrementalSlides: false
 ---
 name: toc
@@ -1084,68 +1082,6 @@ Or, you can set keys on an existing data.table with the `setkey()` function.
 
 </br>
 P.S. Use the `key()` function to see what keys are currently set for your data.table. You can only ever have one key per table at a time, but it's very easy to change them using one of the above commands.
----
-
-# Example
-
-Recall the [speed benchmark](#fast) that we saw at the very beginning of the lecture: data.table ended up being `r mbx`x faster than dplyr for a fairly standard summarising task.
-
---
-
-Let's redo the benchmark, but this time include a version where we pre-assign a key. For optimal performance, the key should match the same variables that we're grouping/subsetting on. 
-- Again, a key can be set on multiple variables, although the lead grouping variable (in the below case: "name") is the most important.
-
---
-
-.small90[
-```{r, eval=FALSE}
-## First create a keyed version of the storms data.table.
-## Note that key variables match the 'by' grouping variables below.
-storms_dt_key = as.data.table(storms, key = c("name", "year", "month", "day"))
-## Collapse function for this keyed data.table. Everything else stays the same.
-collapse_dt_key = function() {
-  storms_dt_key[, .(wind = mean(wind), pressure = mean(pressure), category = first(category)), 
-                by = .(name, year, month, day)]
-}
-## Run the benchmark on all three functions.
-microbenchmark(collapse_dplyr(), collapse_dt(), collapse_dt_key(), times = 1)
-```
-]
-
-.right[*See next slide for results*]
----
-
-# Example (cont.)
-
-```{r collapse_comp_key, dependson=collapse_dt, dependson=collapse_dplyr, echo=FALSE, message=FALSE}
-storms_dt_key = as.data.table(storms, key = c("name", "year", "month", "day"))
-collapse_dt_key = function() {
-  storms_dt_key[, .(wind = mean(wind), pressure = mean(pressure), category = first(category)),
-            by = .(name, year, month, day)]
-}
-
-mb_key = microbenchmark::microbenchmark(collapse_dplyr(), collapse_dt_key(), times = 1)
-mb_key_dt = as.data.table(mb_key) ## For easy calculation in text
-## Round to nearest multiple of 10
-mbx_key = round((mb_key_dt[expr=="collapse_dplyr()", median(time)] /
-                   mb_key_dt[expr=="collapse_dt_key()", median(time)]) / 10) * 10
-mb_key ## print result
-```
-
---
-
-The keyed data.table version is now **`r mbx_key`x** (!!!) faster than dplyr.
---
-
-- That thing you feel... is your face melting.
-
---
-
-It's not just this toy example. In my experience working with real-life data, setting keys almost always leads to huge speed-ups... and those gains tend to scale as the datasets increase in size.
-
---
-
-**Bottom line:** data.table is already plenty fast. But use keys if you're really serious about performance.
 
 ---
 name: merge
@@ -1256,94 +1192,94 @@ mb_join ## print result
 
 So, we get about a **`r mbx_join`x** speed-up for this simple case just by setting keys. More importantly, ordering your data by setting keys will make a huge difference once you start working with big datasets and making complicated joins. Trust me. (FWIW, the [same is true](https://tysonbarrett.com//jekyll/update/2019/10/11/speed_of_joins/) for dplyr.) 
 
----
-name: reshape
-class: inverse, center, middle
+<!-- --- -->
+<!-- name: reshape -->
+<!-- class: inverse, center, middle -->
 
-# Reshaping data
-<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+<!-- # Reshaping data -->
+<!-- <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html> -->
 
----
+<!-- --- -->
 
-# Reshaping options with data.table
+<!-- # Reshaping options with data.table -->
 
-In the tidyverse lecture, we saw how to reshape data using the tidyr::pivot* functions.
+<!-- In the tidyverse lecture, we saw how to reshape data using the tidyr::pivot* functions. -->
 
-data.table offers its own functions for flexibly reshaping data:
-- `melt()`: convert wide data to long data
-- `dcast()`: convert long data to wide data
+<!-- data.table offers its own functions for flexibly reshaping data: -->
+<!-- - `melt()`: convert wide data to long data -->
+<!-- - `dcast()`: convert long data to wide data -->
 
---
+<!-- -- -->
 
-However, I also want to flag the [**tidyfast**](https://tysonbarrett.com/tidyfast/index.html) package by Tyson Barrett, which implements data.table versions of the tidyr::pivot* functions (among other things).
-- `tidyfast::dt_pivot_longer()`: wide to long
-- `tidyfast::dt_pivot_wider()`: long to wide
+<!-- However, I also want to flag the [**tidyfast**](https://tysonbarrett.com/tidyfast/index.html) package by Tyson Barrett, which implements data.table versions of the tidyr::pivot* functions (among other things). -->
+<!-- - `tidyfast::dt_pivot_longer()`: wide to long -->
+<!-- - `tidyfast::dt_pivot_wider()`: long to wide -->
 
---
+<!-- -- -->
 
-I'll demonstrate reshaping with both options on the same fake "stocks" data that we created last time: 
+<!-- I'll demonstrate reshaping with both options on the same fake "stocks" data that we created last time:  -->
 
-```{r stocks}
-stocks = data.table(time = as.Date('2009-01-01') + 0:1,
-                    X = rnorm(2, 0, 1),
-                    Y = rnorm(2, 0, 2),
-                    Z = rnorm(2, 0, 4))
-```
+<!-- ```{r stocks} -->
+<!-- stocks = data.table(time = as.Date('2009-01-01') + 0:1, -->
+<!--                     X = rnorm(2, 0, 1), -->
+<!--                     Y = rnorm(2, 0, 2), -->
+<!--                     Z = rnorm(2, 0, 4)) -->
+<!-- ``` -->
 
----
+<!-- --- -->
 
-# Reshape from wide to long
+<!-- # Reshape from wide to long -->
 
-Our data are currently in wide format.
-```{r stocks_print, dependson=stocks}
-stocks
-```
+<!-- Our data are currently in wide format. -->
+<!-- ```{r stocks_print, dependson=stocks} -->
+<!-- stocks -->
+<!-- ``` -->
 
-To convert this into long format, we could do either of the following:
+<!-- To convert this into long format, we could do either of the following: -->
 
-.pull-left[.small90[
-```{r melt}
-# See ?melt.data.table for options
-melt(stocks, id.vars ="time")
-```
-]]
+<!-- .pull-left[.small90[ -->
+<!-- ```{r melt} -->
+<!-- # See ?melt.data.table for options -->
+<!-- melt(stocks, id.vars ="time") -->
+<!-- ``` -->
+<!-- ]] -->
 
-.pull-right[.small90[
-```{r dt_pivot_longer}
-stocks %>% 
-  dt_pivot_longer(X:Z, names_to="stock", values_to="price")
-```
-]]
+<!-- .pull-right[.small90[ -->
+<!-- ```{r dt_pivot_longer} -->
+<!-- stocks %>%  -->
+<!--   dt_pivot_longer(X:Z, names_to="stock", values_to="price") -->
+<!-- ``` -->
+<!-- ]] -->
 
----
+<!-- --- -->
 
-# Reshape from long to wide
+<!-- # Reshape from long to wide -->
 
-Let's quickly save the long-format stocks data.table. I'll use the `melt()` approach and also throw in some extra column-naming options, just so you can see those in action.
+<!-- Let's quickly save the long-format stocks data.table. I'll use the `melt()` approach and also throw in some extra column-naming options, just so you can see those in action. -->
 
-```{r stocks_long}
-stocks_long = melt(stocks, id.vars ="time", 
-                   variable.name = "stock", value.name = "price")
-stocks_long
-```
+<!-- ```{r stocks_long} -->
+<!-- stocks_long = melt(stocks, id.vars ="time",  -->
+<!--                    variable.name = "stock", value.name = "price") -->
+<!-- stocks_long -->
+<!-- ``` -->
 
---
+<!-- -- -->
 
-.pull-left[.small90[
-```{r dcast}
-dcast(stocks_long, 
-      time ~ stock, 
-      value.var = "price")
-```
-]]
+<!-- .pull-left[.small90[ -->
+<!-- ```{r dcast} -->
+<!-- dcast(stocks_long,  -->
+<!--       time ~ stock,  -->
+<!--       value.var = "price") -->
+<!-- ``` -->
+<!-- ]] -->
 
-.pull-right[.small90[
-```{r dt_pivot_wider}
-stocks_long %>% 
-  dt_pivot_wider(names_from=stock, 
-                 values_from=price)
-```
-]]
+<!-- .pull-right[.small90[ -->
+<!-- ```{r dt_pivot_wider} -->
+<!-- stocks_long %>%  -->
+<!--   dt_pivot_wider(names_from=stock,  -->
+<!--                  values_from=price) -->
+<!-- ``` -->
+<!-- ]] -->
 
 ---
 name: tidyverse
@@ -1393,16 +1329,16 @@ storms_dt[, .(wind = mean(wind),
   theme_minimal()
 ```
 ]]
-.pull-right[
-```{r storms_ggplot, echo = FALSE, fig.height=6}
-collapse_dt_key() %>% 
-  ggplot(aes(x = pressure, y = wind, col=category)) + 
-  geom_point(alpha = 0.3) + 
-  theme_minimal() +
-  coord_equal()
-```
-]
 
+<!-- .pull-right[ -->
+<!-- ```{r storms_ggplot, echo = FALSE, fig.height=6} -->
+<!-- collapse_dt_key %>%  -->
+<!--   ggplot(aes(x = pressure, y = wind, col=category)) +  -->
+<!--   geom_point(alpha = 0.3) +  -->
+<!--   theme_minimal() + -->
+<!--   coord_equal() -->
+<!-- ``` -->
+<!-- ] -->
 ---
 
 # Don't be a fanatic
@@ -1549,10 +1485,5 @@ Impress me with your data wrangling skills using either the tidyverse or data.ta
 ---
 class: inverse, center, middle
 
-# Next lecture: Webscraping (1)
+# Next lecture: Github 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
-
-```{r gen_pdf, include = FALSE, cache = FALSE, eval = TRUE}
-infile = list.files(pattern = '.html')
-pagedown::chrome_print(input = infile, timeout = 100)
-```
