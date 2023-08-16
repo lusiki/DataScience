@@ -43,6 +43,7 @@ library(fontawesome)
 
 # Table of contents
 <br><br><br>
+
 1. [Prologue](#prologue)
 
 2. [Syllabus highlights](#syllabus)
@@ -67,7 +68,7 @@ name: prologue
 # Introductions
 
 ### Course
-
+<br>
 `r fa('globe')` https://github.com/lusiki/DataScience
 
 
@@ -97,18 +98,18 @@ name: syllabus
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Read the full document [here](https://github.com/uo-ec607/syllabus/blob/master/syllabus.pdf).)
+(Read the full document [here]().)
 
 ---
 
 # Why this course?
-
-Fill in the gaps left by traditional econometrics and methods classes.
+<br>
+Fill in the gaps left by traditional statistics and methods classes.
 
 - Practical skills that tools that will benefit your dissertation and future career.
 - Neglected skills like how to actually find datasets in the wild and clean them.
 
-Data science skills are largely distinct from (and complementary to) the core 'metrics oeuvre familiar to economists.
+Data science skills are largely distinct from (and complementary to) the core 'metrics oeuvre familiar to social scientists.
 
 - Data viz, cleaning and wrangling; programming; cloud computation; relational databases; machine learning; etc.
 
