@@ -1,9 +1,9 @@
 ---
-title: "Data Science for Economists"
+title: "Introduction to Data Science"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
-subtitle: "Lecture 4: R language basics"
-author: "Grant McDermott"
-date: "University of Oregon | [EC 607](https://github.com/uo-ec607)" #"`r format(Sys.time(), '%d %B %Y')`"
+subtitle: "Lecture 3: R language basics"
+author: "Luka Sikic"
+date: "Catholic University of Croatia | [GH](https://github.com/lusiki/DataScience)"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts] 

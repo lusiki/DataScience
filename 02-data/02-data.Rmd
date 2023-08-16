@@ -1034,6 +1034,8 @@ mobilnost
 
 
 ---
+
+# Big (Modern) Data Management 
 <br>
 <br>
 <br>
@@ -1061,6 +1063,11 @@ mobilnost
 ]
 
 
+---
+class: inverse, center, middle
+
+# Next lecture: Introduction to R.
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
 
 

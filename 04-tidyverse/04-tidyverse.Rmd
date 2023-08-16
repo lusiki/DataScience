@@ -1,9 +1,9 @@
 ---
-title: "Data Science for Economists"
+title: "Introduction to Data Science"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
-subtitle: "Lecture 5: Data cleaning & wrangling: (1) Tidyverse"
-author: "Grant McDermott"
-date: "University of Oregon | [EC 607](https://github.com/uo-ec607)" #"`r format(Sys.time(), '%d %B %Y')`"
+subtitle: "Lecture 3: Data cleaning & wrangling: (1) Tidyverse"
+author: "Luka Sikic"
+date: "Catholic University of Croatia | [GH](https://github.com/lusiki/DataScience)"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts] 
@@ -11,9 +11,9 @@ output:
     nature:
       highlightStyle: github
       highlightLines: true
-      highlightSpans: true
       countIncrementalSlides: false
 ---
+
 name: toc
 
 ```{css, echo=FALSE}
@@ -756,20 +756,17 @@ tidy_stocks =
   pivot_longer(-time, names_to="stock", values_to="price")
 ```
 
----
-name: pivot_wider
-
-# 2) tidyr::pivot_wider
-
-```{r pivot_wider1, dependson=tidy_stocks}
-tidy_stocks %>% pivot_wider(names_from=stock, values_from=price)
-tidy_stocks %>% pivot_wider(names_from=time, values_from=price)
+```{r echo = F, eval=F}
+# ---
+# name: pivot_wider
+# 
+# # 2) tidyr::pivot_wider
+# 
+# ```{r pivot_wider1, dependson=tidy_stocks}
+# tidy_stocks %>% pivot_wider(names_from=stock, values_from=price)
+# tidy_stocks %>% pivot_wider(names_from=time, values_from=price)
 ```
-
---
-
-</br>
-Note that the second example &mdash; which has combined different pivoting arguments &mdash; has effectively transposed the data.
+```
 
 
 ---
@@ -907,8 +904,3 @@ class: inverse, center, middle
 
 # Next lecture: Data cleaning and wrangling: (2) data.table
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
-
-```{r gen_pdf, include = FALSE, cache = FALSE, eval = TRUE}
-infile = list.files(pattern = '.html')
-pagedown::chrome_print(input = infile, timeout = 100)
-```
