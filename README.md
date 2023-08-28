@@ -30,7 +30,7 @@ Note: Course material is cloned  from Grant McDermot`s course [Data Science for 
 ## Lectures
 
 
-1. Introduction \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/01-intro/01-Intro.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.Rmd)\]
+1. Introduction \[[**.html**](https://raw.githack.com/lusiki/DataScience/master/01-intro/01-Intro.html) | [**.Rmd**](https://github.com/lusiki/DataScience/blob/master/01-intro/01-Intro.Rmd)\]
 2. Version control with Git(Hub) \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.Rmd)\]
 3. Learning to love the shell \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.Rmd)\]
 4. R language basics \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/04-rlang/04-rlang.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/04-rlang/04-rlang.Rmd)\]
