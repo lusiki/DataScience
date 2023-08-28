@@ -1,8 +1,9 @@
 ---
-title: "Data Science for Economists"
-subtitle: "Lecture 2: Version control with Git(Hub)"
-author: "Grant McDermott"
-date: "University of Oregon | [EC 607](https://github.com/uo-ec607)" #"`r format(Sys.time(), '%d %B %Y')`"
+title: "Introduction to Data Science"
+# subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
+subtitle: "Lecture 6: Version control with Git(Hub)"
+author: "Luka Sikic"
+date: "Catholic University of Croatia | [GH](https://github.com/lusiki/DataScience)" #"`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts] 
