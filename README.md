@@ -31,12 +31,14 @@ Note: Course material is cloned  from Grant McDermot`s course [Data Science for 
 
 
 1. Introduction \[[**.html**](https://raw.githack.com/lusiki/DataScience/master/01-intro/01-Intro.html) | [**.Rmd**](https://github.com/lusiki/DataScience/blob/master/01-intro/01-Intro.Rmd)\]
-2. Version control with Git(Hub) \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.Rmd)\]
-3. Learning to love the shell \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.Rmd)\]
-4. R language basics \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/04-rlang/04-rlang.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/04-rlang/04-rlang.Rmd)\]
-5. Data wrangling & tidying
-    - Tidyverse \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/05-tidyverse/05-tidyverse.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/05-tidyverse/05-tidyverse.Rmd)\]
-    - data.table \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/05-datatable/05-datatable.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/05-datatable/05-datatable.Rmd)\]
+2. Data Structures and Sources \[[**.html**](https://raw.githack.com/lusiki/DataScience/master/02-data/02-data.html) | [**.Rmd**](https://github.com/lusiki/DataScience/blob/master/02-data/02-data.Rmd)\]
+3. R language basics \[[**.html**](https://raw.githack.com/lusiki/DataScience/master/03-rlang/03-rlang.html) | [**.Rmd**](https://github.com/lusiki/DataScience/blob/master/03-rlang/03-rlang.Rmd)\]
+4. Data cleaning & wrangling: (1) Tidyverse \[[**.html**](https://raw.githack.com/lusiki/DataScience/master/04-tidyverse/04-tidyverse.html) | [**.Rmd**](https://github.com/lusiki/DataScience/blob/master/04-tidyverse/04-tidyverse.Rmd)\]
+5. Data cleaning & wrangling: (2) data.table\[[**.html**]() | [**.Rmd**]()\]
+
+6. Version control with Git(Hub) \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.Rmd)\]
+7. Working with the shell \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.Rmd)\]
+
 6. Webscraping: (1) Server-side & CSS \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/06-web-css/06-web-css.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/06-web-css/06-web-css.Rmd)\]
 7. Webscraping: (2) Client-side & APIs \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/07-web-apis/07-web-apis.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/07-web-apis/07-web-apis.Rmd)\]
 8. Regression analysis in R \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/08-regression/08-regression.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/08-regression/08-regression.Rmd)\]

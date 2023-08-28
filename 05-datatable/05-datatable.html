@@ -180,16 +180,19 @@ microbenchmark(collapse_dplyr(), collapse_dt(), times = 1)
 
 ```
 ## Unit: milliseconds
-##              expr      min       lq     mean   median       uq      max neval
-##  collapse_dplyr() 742.1052 742.1052 742.1052 742.1052 742.1052 742.1052     1
-##     collapse_dt()  10.6505  10.6505  10.6505  10.6505  10.6505  10.6505     1
+##              expr        min         lq       mean     median         uq
+##  collapse_dplyr() 565.448301 565.448301 565.448301 565.448301 565.448301
+##     collapse_dt()   9.589601   9.589601   9.589601   9.589601   9.589601
+##         max neval
+##  565.448301     1
+##    9.589601     1
 ```
 ]
 
 --
 
 .small90[
-**Result:** data.table is 70x faster! (Thanks to [Keith Head](https://twitter.com/ckhead) for this example.)
+**Result:** data.table is 60x faster! (Thanks to [Keith Head](https://twitter.com/ckhead) for this example.)
 ]
 
 ---
@@ -938,9 +941,9 @@ starwars_dt[1:2, .(alias = name, crib = homeworld)]
 ```
 
 ```
-##             alias     crib
-## 1: Luke Skywalker Tatooine
-## 2:          C-3PO Tatooine
+##                    alias  crib
+## 1: Wicket Systri Warrick Endor
+## 2:                 IG-88  &lt;NA&gt;
 ```
 
 ---
@@ -987,12 +990,12 @@ starwars_dt[, mean_height := mean(height, na.rm=T)] %&gt;% ## Add mean height as
 ```
 
 ```
-##              name height mean_height
-## 1: Luke Skywalker    172     174.358
-## 2:          C-3PO    167     174.358
-## 3:          R2-D2     96     174.358
-## 4:    Darth Vader    202     174.358
-## 5:    Leia Organa    150     174.358
+##                     name height mean_height
+## 1: Wicket Systri Warrick     88     174.358
+## 2:                 IG-88    200     174.358
+## 3:        Luke Skywalker    172     174.358
+## 4:           Leia Organa    150     174.358
+## 5:        Wedge Antilles    170     174.358
 ```
 
 ---
@@ -1046,9 +1049,9 @@ starwars_dt[, .(mean_height = mean(height, na.rm=T)), by = .(species, homeworld)
 
 ```
 ##    species homeworld mean_height
-## 1:   Human  Tatooine    179.2500
-## 2:   Droid  Tatooine    132.0000
-## 3:   Droid     Naboo     96.0000
+## 1:    Ewok     Endor     88.0000
+## 2:   Droid      &lt;NA&gt;    148.0000
+## 3:   Human  Tatooine    179.2500
 ## 4:   Human  Alderaan    176.3333
 ```
 
@@ -1091,9 +1094,9 @@ starwars_dt[,
 ```
 
 ```
-##    species   height     mass birth_year
-## 1:   Human 176.6452 82.78182   53.41200
-## 2:   Droid 131.2000 69.75000   53.33333
+##    species height  mass birth_year
+## 1:    Ewok   88.0 20.00    8.00000
+## 2:   Droid  131.2 69.75   53.33333
 ```
 
 ---
@@ -1111,9 +1114,9 @@ starwars_dt[,
 ```
 
 ```
-##    species   height     mass birth_year
-## 1:   Human 176.6452 82.78182   53.41200
-## 2:   Droid 131.2000 69.75000   53.33333
+##    species height  mass birth_year
+## 1:    Ewok   88.0 20.00    8.00000
+## 2:   Droid  131.2 69.75   53.33333
 ```
 
 First, we specify what we want to *do* on our data subset (i.e. `.SD`). In this case, we want the mean for each element, which we obtain by iterating over with the base `lapply()` function.&lt;sup&gt;1&lt;/sup&gt;
@@ -1137,9 +1140,9 @@ starwars_dt[,
 ```
 
 ```
-##    species   height     mass birth_year
-## 1:   Human 176.6452 82.78182   53.41200
-## 2:   Droid 131.2000 69.75000   53.33333
+##    species height  mass birth_year
+## 1:    Ewok   88.0 20.00    8.00000
+## 2:   Droid  131.2 69.75   53.33333
 ```
 
 First, we specify what we want to *do* on our data subset (i.e. `.SD`). In this case, we want the mean for each element, which we obtain by iterating over with the base `lapply()` function.&lt;sup&gt;1&lt;/sup&gt;
@@ -1165,9 +1168,9 @@ starwars_dt[,
 ```
 
 ```
-##    species   height     mass birth_year
-## 1:   Human 176.6452 82.78182   53.41200
-## 2:   Droid 131.2000 69.75000   53.33333
+##    species height  mass birth_year
+## 1:    Ewok   88.0 20.00    8.00000
+## 2:   Droid  131.2 69.75   53.33333
 ```
 
 First, we specify what we want to *do* on our data subset (i.e. `.SD`). In this case, we want the mean for each element, which we obtain by iterating over with the base `lapply()` function.&lt;sup&gt;1&lt;/sup&gt;
@@ -1386,14 +1389,14 @@ microbenchmark(merge_dt(), merge_dt_key(), times = 1)
 
 ```
 ## Unit: milliseconds
-##            expr      min       lq     mean   median       uq      max neval
-##      merge_dt() 395.8106 395.8106 395.8106 395.8106 395.8106 395.8106     1
-##  merge_dt_key()  47.5478  47.5478  47.5478  47.5478  47.5478  47.5478     1
+##            expr     min      lq    mean  median      uq     max neval
+##      merge_dt() 67.9394 67.9394 67.9394 67.9394 67.9394 67.9394     1
+##  merge_dt_key() 43.5735 43.5735 43.5735 43.5735 43.5735 43.5735     1
 ```
 
 --
 
-So, we get about a **10x** speed-up for this simple case just by setting keys. More importantly, ordering your data by setting keys will make a huge difference once you start working with big datasets and making complicated joins. Trust me. (FWIW, the [same is true](https://tysonbarrett.com//jekyll/update/2019/10/11/speed_of_joins/) for dplyr.) 
+So, we get about a **0x** speed-up for this simple case just by setting keys. More importantly, ordering your data by setting keys will make a huge difference once you start working with big datasets and making complicated joins. Trust me. (FWIW, the [same is true](https://tysonbarrett.com//jekyll/update/2019/10/11/speed_of_joins/) for dplyr.) 
 
 &lt;!-- --- --&gt;
 &lt;!-- name: reshape --&gt;
@@ -1534,7 +1537,15 @@ storms_dt[, .(wind = mean(wind),
 ```
 ]]
 
-
+&lt;!-- .pull-right[ --&gt;
+&lt;!-- ```{r storms_ggplot, echo = FALSE, fig.height=6} --&gt;
+&lt;!-- collapse_dt_key %&gt;%  --&gt;
+&lt;!--   ggplot(aes(x = pressure, y = wind, col=category)) +  --&gt;
+&lt;!--   geom_point(alpha = 0.3) +  --&gt;
+&lt;!--   theme_minimal() + --&gt;
+&lt;!--   coord_equal() --&gt;
+&lt;!-- ``` --&gt;
+&lt;!-- ] --&gt;
 ---
 
 # Don't be a fanatic
@@ -1605,8 +1616,8 @@ microbenchmark::microbenchmark(collapse_dplyr(), collapse_dtplyr(), times = 1)
 ```
 ## Unit: milliseconds
 ##               expr      min       lq     mean   median       uq      max neval
-##   collapse_dplyr() 565.7748 565.7748 565.7748 565.7748 565.7748 565.7748     1
-##  collapse_dtplyr()  16.1384  16.1384  16.1384  16.1384  16.1384  16.1384     1
+##   collapse_dplyr() 486.5895 486.5895 486.5895 486.5895 486.5895 486.5895     1
+##  collapse_dtplyr()  14.6049  14.6049  14.6049  14.6049  14.6049  14.6049     1
 ```
 
 --
