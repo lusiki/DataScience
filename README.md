@@ -1,8 +1,6 @@
 # Introduction to Data science 
 
-The course is intended for social scientists (political science, communication studies, history, and economics) with no or little technical background in coding and undergraduate/graduate level knowledge in statistics.
-
-The course starts off from the Big Data approach to social sciences and modern data sources like the Web, apps, social networks, urban sensors, etc. The methodological focus is on computational social science (CSS) principles and the use of computer technologies for processing and analyzing (large volume) data. The course is not intended as a comprehensive reference for working with Big Data technologies in social sciences because the materials do not cover: working with the terminal (Bash Shell), working with collaboration and code exchange platforms (Git, GitHub), working with Docker, programming and iteration, parallel programming, cloud work (Cloud).
+The course is intended for social scientists (political science, communication studies, history, and economics) with no or little technical background in coding and undergraduate/graduate level knowledge in statistics. The course uses Big Data approach to social sciences and modern data sources like the Web, apps, social networks, urban sensors, etc. The methodological focus is on computational social science (CSS) principles and the use of computer technologies for processing and analyzing (large volume) data. 
 
 The aim of the course is to familiarize students with:
 
@@ -26,13 +24,13 @@ The following book is essential literature for the course:
 <br><i>by Garrett Grolemund and Hadley Wickham</i>
 <br>This is literature for R. A <a href="https://r4ds.had.co.nz/">bookdown</a> version is also available.
 
-Note: This course is cloned from Grant McDermot`s course [Data Science for Economists](https://github.com/uo-ec607/lectures) and adjusted acordingly.
+Note: Course material is cloned  from Grant McDermot`s course [Data Science for Economists](https://github.com/uo-ec607/lectures) and readjusted for the purposes of this course.
 
 
 ## Lectures
 
 
-1. Introduction \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/01-intro/01-Intro.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/01-intro/01-Intro.Rmd\]
+1. Introduction \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/01-intro/01-Intro.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.Rmd)\]
 2. Version control with Git(Hub) \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.Rmd)\]
 3. Learning to love the shell \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.Rmd)\]
 4. R language basics \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/04-rlang/04-rlang.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/04-rlang/04-rlang.Rmd)\]
