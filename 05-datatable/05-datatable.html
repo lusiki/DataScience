@@ -990,12 +990,12 @@ starwars_dt[, mean_height := mean(height, na.rm=T)] %&gt;% ## Add mean height as
 ```
 
 ```
-##                     name height mean_height
-## 1: Wicket Systri Warrick     88     174.358
-## 2:                 IG-88    200     174.358
-## 3:        Luke Skywalker    172     174.358
-## 4:           Leia Organa    150     174.358
-## 5:        Wedge Antilles    170     174.358
+##              name height mean_height
+## 1: Luke Skywalker    172     174.358
+## 2:          C-3PO    167     174.358
+## 3:          R2-D2     96     174.358
+## 4:    Darth Vader    202     174.358
+## 5:    Leia Organa    150     174.358
 ```
 
 ---
@@ -1049,9 +1049,9 @@ starwars_dt[, .(mean_height = mean(height, na.rm=T)), by = .(species, homeworld)
 
 ```
 ##    species homeworld mean_height
-## 1:    Ewok     Endor     88.0000
-## 2:   Droid      &lt;NA&gt;    148.0000
-## 3:   Human  Tatooine    179.2500
+## 1:   Human  Tatooine    179.2500
+## 2:   Droid  Tatooine    132.0000
+## 3:   Droid     Naboo     96.0000
 ## 4:   Human  Alderaan    176.3333
 ```
 
@@ -1687,18 +1687,11 @@ And related packages:
 - https://tysonbarrett.com/tidyfast
 - https://dtplyr.tidyverse.org
 
----
-
-# PS &amp;mdash; Assignment
-
-Your next assignment is up.
-
-Impress me with your data wrangling skills using either the tidyverse or data.table (or both!)
 
 ---
 class: inverse, center, middle
 
-# Next lecture: Github 
+# Next lecture:  
 &lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#EB811B' size=1px width=796px&gt;&lt;/html&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

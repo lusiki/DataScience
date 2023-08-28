@@ -1474,16 +1474,9 @@ And related packages:
 - https://tysonbarrett.com/tidyfast
 - https://dtplyr.tidyverse.org
 
----
-
-# PS &mdash; Assignment
-
-Your next assignment is up.
-
-Impress me with your data wrangling skills using either the tidyverse or data.table (or both!)
 
 ---
 class: inverse, center, middle
 
-# Next lecture: Github 
+# Next lecture:  
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>

@@ -35,8 +35,7 @@ Note: Course material is cloned  from Grant McDermot`s course [Data Science for 
 3. R language basics \[[**.html**](https://raw.githack.com/lusiki/DataScience/master/03-rlang/03-rlang.html) | [**.Rmd**](https://github.com/lusiki/DataScience/blob/master/03-rlang/03-rlang.Rmd)\]
 4. Data cleaning & wrangling: (1) Tidyverse \[[**.html**](https://raw.githack.com/lusiki/DataScience/master/04-tidyverse/04-tidyverse.html) | [**.Rmd**](https://github.com/lusiki/DataScience/blob/master/04-tidyverse/04-tidyverse.Rmd)\]
 5. Data cleaning & wrangling: (2) data.table\[[**.html**]() | [**.Rmd**]()\]
-
-6. Version control with Git(Hub) \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.Rmd)\]
+6. Version control with Git(Hub) \[[**.html**](https://raw.githack.com/lusiki/DataScience/master/06-git/02-Git.html) | [**.Rmd**](https://github.com/lusiki/DataScience/blob/master/06-git/02-Git.Rmd)\]
 7. Working with the shell \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/03-shell/03-shell.Rmd)\]
 
 6. Webscraping: (1) Server-side & CSS \[[**.html**](https://raw.githack.com/uo-ec607/lectures/master/06-web-css/06-web-css.html) | [**.Rmd**](https://raw.githack.com/uo-ec607/lectures/master/06-web-css/06-web-css.Rmd)\]

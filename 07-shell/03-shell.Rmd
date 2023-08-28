@@ -1,9 +1,9 @@
 ---
-title: "Data Science for Economists"
+title: "Introduction to Data Science"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
-subtitle: "Lecture 3: Learning to love the shell"
-author: "Grant McDermott"
-date: "University of Oregon | [EC 607](https://github.com/uo-ec607)" #"`r format(Sys.time(), '%d %B %Y')`"
+subtitle: "Lecture 7: Working with the shell"
+author: "Luka Sikic"
+date: "Catholic University of Croatia | [GH](https://github.com/lusiki/DataScience)" #"`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts] 
@@ -11,7 +11,6 @@ output:
     nature:
       highlightStyle: github
       highlightLines: true
-      highlightSpans: true
       countIncrementalSlides: false
 ---
 name: toc
@@ -35,13 +34,13 @@ opts_chunk$set(
   cache=F#, echo=F, warning=F, message=F
   )
 ## Next hook based on this SO answer: https://stackoverflow.com/a/39025054
-knit_hooks$set(
-  prompt = function(before, options, envir) {
-    options(
-      prompt = if (options$engine %in% c('sh','bash')) '$ ' else 'R> ',
-      continue = if (options$engine %in% c('sh','bash')) '$ ' else '+ '
-      )
-})
+# knit_hooks$set(
+#   prompt = function(before, options, envir) {
+#     options(
+#       prompt = if (options$engine %in% c('sh','bash')) '$ ' else 'R> ',
+#       continue = if (options$engine %in% c('sh','bash')) '$ ' else '+ '
+#       )
+# })
 ```
 
 # Table of contents
@@ -112,7 +111,6 @@ I'm also going to recommend that you spruce up your GitHub profiles.
 
 </br>
 
-Today's lecture is the last detour before we get back to data analyis with R and RStudio.
 - Laying proper foundations with Git and the shell will put us in a strong positon for advanced data science work as the course develops.
 
 ---
@@ -156,12 +154,6 @@ Don't be thrown off by terminology: *shell*, *terminal*, *tty*, *command prompt*
 There are many shell variants, but we're going to focus on [**Bash**](https://www.gnu.org/software/bash/) (i.e. **B**ourne **a**gain **sh**ell).
 - Included by default on Linux and MacOS.
 - Windows users need to install a Bash-compatible shell first (again, see [here](#windows)).
-
---
-
-</br>
-
-(For the record, I primarily use [zsh](https://ohmyz.sh/) (i.e. the "Z shell") &mdash; which is now also the [default shell](https://support.apple.com/en-us/HT208050) on MacOS. As a result, my shell might look slightly different to yours during live coding sessions. The commands will stay the same, though.)
 
 
 ---
@@ -459,58 +451,7 @@ Examples:
 - Tell the command *what* to operate on.
 - Usually a file, path, or a set of files and folders.
 
----
 
-# Help: man
-
-The `man` command ("manual pages") is your friend if you ever need help.
-- Tip: Hit spacebar to scroll down a page at a time, "h" to see the help notes of the `man` command itself and "q" to quit.
-
-```{bash man}
-man ls
-```
-
----
-
-# Help: man (cont.)
-
-A useful feature of `man` is quick pattern searching with "/pattern".
-- Try this now by running `$ man ls` again and then typing "/human" and hitting the return key. 
-- To continue on to the next case, hit `n`. (It won't work here because the pattern "human" only occurs once in the manual file.)
-
---
-
-</br>
-
-Again, this and other `man` tricks tricks are detailed in the help pages (hit "h").
-
----
-
-# Help: cheat
-
-I also like the [cheat](https://github.com/chrisallenlane/cheat) utility, which provides a more readable summary / cheatsheet of various command. You'll need to install it first. (Linux and MacOS only.)
-
-```
-$ cheat ls
-
-## # Displays everything in the target directory
-## ls path/to/the/target/directory
-## 
-## # Displays everything including hidden files
-## ls -a
-## 
-## # Displays all files, along with the size (with unit suffixes) and timestamp
-## ls -lh 
-## 
-## # Display files, sorted by size
-## ls -S
-## 
-## # Display directories only
-## ls -d */
-## 
-## # Display directories only, include hidden
-## ls -d .*/ */
-```
 
 ---
 class: inverse, center, middle
@@ -1764,8 +1705,3 @@ Presumably, you've cloned the course repo somewhere on your C drive.
 ### Which option to choose?
 
 Both are fine, but I recommend option **(i)**. As a Windows user, being able to access a true Bash shell (i.e. terminal) conveniently from RStudio will make things *much* easier for you in my class. You can always revert back to a different shell later if you want. 
-
-```{r gen_pdf, include = FALSE, cache = FALSE, eval = TRUE}
-infile = list.files(pattern = '.html')
-pagedown::chrome_print(input = infile, timeout = 100)
-```
