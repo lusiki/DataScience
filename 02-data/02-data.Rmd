@@ -52,7 +52,7 @@ library(fontawesome)
 
 4. [Sources](#sources)
 
-5. [](#ggplot2)
+
 
 ---
 class: inverse, center, middle
@@ -68,8 +68,10 @@ name: structure
 
 <br><br><br><br>
 - observations with characteristics, mostly organized in a table (rows and columns)
+<br>
 - scientifically collected data, telephone directory
-- a smaller part of the data
+<br>
+- a smaller part of the data overall
 
 ---
 
@@ -77,8 +79,11 @@ name: structure
 
 <br><br><br><br>
 - data without a standard organizational hierarchy
+<br>
 - Facebook posts, Twitter, server logs, genetic sequence of nucleotides, text data
+<br>
 - probably more than 80% of all data
+<br>
 - require adjustment before analysis
 
 ---
@@ -86,13 +91,24 @@ name: structure
 # Quantitative data
 
 <br><br>
-- numbers, mathematical procedures, average, time trend, threshold effects
+- numbers
+<br>
+- mathematical procedures
+<br>
+- average
+<br>
+- time trend
+<br>
+- threshold effects
 
 ---
 
 # Qualitative data
 <br><br>
-- "natural" categories, language
+- "natural" categories
+<br>
+- language
+<br>
 - the most frequent observation, unique values
 
 
@@ -106,86 +122,103 @@ name: dpractice
 
 ---
 
-# Some important types of data
-
 ## Big Data
 
+
+
 - due to their size, they cannot be stored on standard relational databases
+<br>
 - unstructured, semi-structured and structured data
+<br>
 - from terabytes to zettabytes in size
+<br>
 - basis for machine learning, AI, predicting the future
 
 --- 
 
-
-# Some important types of data
-
 ## Time series
 
 - each observation has a time stamp (event or processing)
-- eg behavioral data (web) used to predict action models
-- eg financial trading
+<br>
+- eg. behavioral data (web) used to predict action models
+<br>
+- eg. financial trading
 
 ---
-# Some important types of data
+
+
 ## Machine data
 
 - system produced data
+<br>
 - eg PC logs, mobile phones, smart cars, applications, API, cloud applications, sensor signals
+<br>
 - especially useful for threat identification, process quality control, forecasting
 
 ---
-# Some important types of data
+
 ## Spatial-temporal data
 
 - geographical and temporal stamp
+<br>
 - demonstrate locational dynamics in time
+<br>
 - tracking of vehicles, changes in the population, detection of anomalies in the (e.g. telecom) network
 
 ---
-# Some important types of data
+
 ## Open data
 
 - available to the public according to the "rules for use"
+<br>
 - currently mostly limited to scientific use
 
 ---
-# Some important types of data
+
 ## Black data
 
 - unused data
+<br>
 - mostly institutionally owned (companies, institutes, think-tanks, faculties)
 
 ---
-# Some important types of data
+
 ## Data in real time
 
 - high demand and "hot trend"
+<br>
 - 5G
+<br>
 - medicine, transport, trade
+<br>
 - great potential
 
 ---
-# Some important types of data
+
 ## Genomic data
 
 - DNA analysis in order to identify the effects of drugs and treat diseases
+<br>
 - analytics is the main limitation
+<br>
 - collection and processing of data is difficult
 
 ---
-# Some important types of data
+
 ## Operational data
 
 - insights into processes beyond analysts and specialists
+<br>
 - data on internships
+<br>
 - useful for reverse engineering
 
 ---
-# Some important types of data
+
 ## High-dimensional data
 
 - popularized through IT support for facial recognition
+<br>
 - due to the complexity of the transformations, they require new ways of recording and manipulation
 
 
@@ -200,28 +233,37 @@ name: BData
 ---
 
 # Characteristics 
-
+<br><br>
 - high volume, scope, speed and variety
+<br>
 - geographic, textual, and social media data
+<br>
 - availability in real time, greater scope, new indicators and smaller structures
+<br>
 - in the business sector and natural sciences, BD has already become a standard
+<br>
 - social sciences and public institutions (governments) are late in accepting BD
 
 ---
 
 # Potential
-
+<br><br>
 - new insights into society, politics and economy
+<br>
 - new research questions
+<br>
 - more accurate predictions
+<br>
 - better public policies
 
 ---
 
 # Challenges
-
+<br><br>
 - access to data
+<br>
 - data management and analysis implementation (T.Khun!?)
+<br>
 - asking the right questions
 
 ---
