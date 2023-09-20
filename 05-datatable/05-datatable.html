@@ -180,19 +180,16 @@ microbenchmark(collapse_dplyr(), collapse_dt(), times = 1)
 
 ```
 ## Unit: milliseconds
-##              expr        min         lq       mean     median         uq
-##  collapse_dplyr() 565.448301 565.448301 565.448301 565.448301 565.448301
-##     collapse_dt()   9.589601   9.589601   9.589601   9.589601   9.589601
-##         max neval
-##  565.448301     1
-##    9.589601     1
+##              expr      min       lq     mean   median       uq      max neval
+##  collapse_dplyr() 544.6977 544.6977 544.6977 544.6977 544.6977 544.6977     1
+##     collapse_dt()  10.4854  10.4854  10.4854  10.4854  10.4854  10.4854     1
 ```
 ]
 
 --
 
 .small90[
-**Result:** data.table is 60x faster! (Thanks to [Keith Head](https://twitter.com/ckhead) for this example.)
+**Result:** data.table is 50x faster! (Thanks to [Keith Head](https://twitter.com/ckhead) for this example.)
 ]
 
 ---
@@ -1390,8 +1387,8 @@ microbenchmark(merge_dt(), merge_dt_key(), times = 1)
 ```
 ## Unit: milliseconds
 ##            expr     min      lq    mean  median      uq     max neval
-##      merge_dt() 67.9394 67.9394 67.9394 67.9394 67.9394 67.9394     1
-##  merge_dt_key() 43.5735 43.5735 43.5735 43.5735 43.5735 43.5735     1
+##      merge_dt() 75.8740 75.8740 75.8740 75.8740 75.8740 75.8740     1
+##  merge_dt_key() 37.2314 37.2314 37.2314 37.2314 37.2314 37.2314     1
 ```
 
 --
@@ -1616,13 +1613,13 @@ microbenchmark::microbenchmark(collapse_dplyr(), collapse_dtplyr(), times = 1)
 ```
 ## Unit: milliseconds
 ##               expr      min       lq     mean   median       uq      max neval
-##   collapse_dplyr() 486.5895 486.5895 486.5895 486.5895 486.5895 486.5895     1
-##  collapse_dtplyr()  14.6049  14.6049  14.6049  14.6049  14.6049  14.6049     1
+##   collapse_dplyr() 511.5940 511.5940 511.5940 511.5940 511.5940 511.5940     1
+##  collapse_dtplyr()  13.6023  13.6023  13.6023  13.6023  13.6023  13.6023     1
 ```
 
 --
 
-A **35x** speed-up for free? I'd take it!
+A **40x** speed-up for free? I'd take it!
 
 --
 

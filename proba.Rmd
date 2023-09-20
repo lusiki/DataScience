@@ -1,17 +1,8 @@
 ---
-title: "Introduction to Data Science"
-# subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
-subtitle: "Lecture 6: Version control with Git(Hub)"
-author: "Luka Sikic"
-date: "Catholic University of Croatia | [GH](https://github.com/lusiki/DataScience)" #"`r format(Sys.time(), '%d %B %Y')`"
-output:
-  xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts] 
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
+title: "Untitled"
+author: "Lux"
+date: "2023-09-20"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -114,7 +105,7 @@ Let's start by scraping the first table on the page, which documents the [unoffi
 
 ```{r sg100m_gif, echo = FALSE, out.width='100%'}
 if (knitr::is_html_output()){
-  knitr::include_graphics('08-web-css/pics/sg100m.gif')
+  knitr::include_graphics('pics/sg100m.gif')
 } else {
   message("Sorry, this GIF is only available in the the HTML version of the notes.")
 }
@@ -122,6 +113,8 @@ if (knitr::is_html_output()){
 
 </br>
 As you can see, working through this iterative process yields *"div+ .wikitable :nth-child(1)"*. We can now use this unique CSS selector to isolate the pre-IAAF table content from the rest of the HTML document. The core **rvest** function that we'll use to extract the table content is `html_element()`, before piping it on to `html_table()` to parse the HTML table into an R data frame.
+
+
 
 ```{r pre_iaaf_1, dependson=m100}
 pre_iaaf = 
@@ -158,7 +151,7 @@ Here's a quick example using Google Chrome. First, I open up the inspect console
 
 ```{r inspect100m_gif, echo = FALSE, out.width='100%'}
 if (knitr::is_html_output()){
-  knitr::include_graphics('08-web-css/pics/inspect100m.gif')
+  knitr::include_graphics('pics/inspect100m.gif')
 } else {
   message("Sorry, this GIF is only available in the the HTML version of the notes.")
 }
