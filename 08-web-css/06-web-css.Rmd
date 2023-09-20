@@ -4,14 +4,6 @@ title: "Introduction to Data Science"
 subtitle: "Lecture 6: Version control with Git(Hub)"
 author: "Luka Sikic"
 date: "Catholic University of Croatia | [GH](https://github.com/lusiki/DataScience)" #"`r format(Sys.time(), '%d %B %Y')`"
-output:
-  xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts] 
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
 ---
 
 ```{r setup, include=FALSE}
@@ -122,6 +114,7 @@ if (knitr::is_html_output()){
 
 </br>
 As you can see, working through this iterative process yields *"div+ .wikitable :nth-child(1)"*. We can now use this unique CSS selector to isolate the pre-IAAF table content from the rest of the HTML document. The core **rvest** function that we'll use to extract the table content is `html_element()`, before piping it on to `html_table()` to parse the HTML table into an R data frame.
+
 
 ```{r pre_iaaf_1, dependson=m100}
 pre_iaaf =
@@ -434,3 +427,4 @@ ggplot(speakers_dt, aes(date, price)) +
 ## Further resources and exercises
 
 In the next lecture, we're going to focus on client-side web content and interacting with APIs. For the moment, you can practice your `rvest`-based scraping skills by following along with any of the many (many) tutorials available online. Lastly, we spoke a bit about the "be nice" scraping motto at the beginning of the lecture. I also wanted to point you to the **polite** package ([link](https://github.com/dmi3kno/polite)). It provides some helpful tools to maintain web etiquette, such as checking for permission and not hammering the host website with requests. As a bonus, it plays very nicely with the **rvest** workflow that we covered today, so please take a look.
+
